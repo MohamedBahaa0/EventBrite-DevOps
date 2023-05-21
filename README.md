@@ -1,6 +1,6 @@
 # DevOps Automation Scripts
 
-## Descriptio
+## Description
 This repository contains a collection of automation scripts and configuration files for streamlining the DevOps processes in our project. It aims to automate various tasks such as deployment, continuous integration, infrastructure management, and monitoring.
 
 ## Key Features
