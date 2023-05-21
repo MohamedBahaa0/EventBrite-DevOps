@@ -17,7 +17,7 @@ This repository contains a collection of automation scripts and configuration fi
 
 ## Links:
 - Live Demo: [Demo Link](https://www.event-us.me)
-- Documentation: [Documentation Link](https://app.gitbook.com/o/GfNW2ecImUpxLewLxXv4/s/A2IUmGuoT0Y5WNeBZXyl/)
+- Documentation: [Documentation Link](https://bahaa.gitbook.io/devops/)
 
 Please refer to the documentation for detailed instructions on how to use and configure the automation scripts and files in this repository.
 
