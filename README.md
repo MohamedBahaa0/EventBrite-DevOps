@@ -1,22 +1,22 @@
-Repository Name: Event Management App
+# DevOps Automation Scripts
 
-Description:
-The Event Management App is a web application built using Node.js and React. It provides a platform for users to create, manage, and promote events. This repository contains the source code for both the frontend and backend components.
+## Description
+This repository contains a collection of automation scripts and configuration files for streamlining the DevOps processes in our project. It aims to automate various tasks such as deployment, continuous integration, infrastructure management, and monitoring.
 
-Key Features:
+## Key Features
 - CI/CD pipeline scripts for automated build, test, and deployment processes
 - Systemd unit files for managing services and ensuring high availability
 - Configuration files for infrastructure management tools like Terraform and Ansible
 - Prometheus and Grafana setup for monitoring and observability
 - Docker configuration files for containerization of applications
 
-Dependencies:
+## Dependencies
 - Jenkins for CI/CD pipeline
 - Docker for containerization
 - Prometheus and Grafana for monitoring
 
-Links:
-- Live Demo: [Demo Link](https://event-us.me)
+## Links:
+- Live Demo: [Demo Link](https://www.event-us.me)
 - Documentation: [Documentation Link](https://app.gitbook.com/o/GfNW2ecImUpxLewLxXv4/s/A2IUmGuoT0Y5WNeBZXyl/)
 
 Please refer to the documentation for detailed instructions on how to use and configure the automation scripts and files in this repository.
