@@ -1,0 +1,19 @@
+# Base image
+FROM python: 3.9-slim-buster
+# Set working directory
+WORKDIR /app
+# Copy requirements.txt to the working directory
+COPY requirements. txt
+# Install requirements
+RUN pip install -r requirements.txt
+# Copy
+# Copy the rest of the application code to the working directory
+COPY..
+# Set environment variables
+ENV PYTHONUNBUFFERED=1 \
+DJANGO_SETTINGS_MODULE=myproject.settings.production \
+PORT=8000
+# Expose the port on which the application will run
+EXPOSE $PORT
+# Start the application using gunicorn
+CMD ["gunicorn","myproject.wsgi:application", "--bind", "0.0.0.0:$PORT"]

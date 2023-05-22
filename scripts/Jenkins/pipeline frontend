@@ -1,0 +1,52 @@
+pipeline {
+	agent any
+	
+	stages {
+	
+		stage('Fetch code') {
+			steps {
+				git branch: 'development',
+				url: 'https://github.com/EventBriteClone/EventBrite_Clone_Frontend.git'
+			}
+		}
+		
+		stage('Install dependencies') {
+			steps {
+				sh 'npm install'
+//				sh 'sudo audit fix --force'
+			}
+		}
+		
+// 		stage('Test') {
+// 			steps {
+// 				sh 'npm test'
+// 			}
+// 		}
+		
+		stage('Build') {
+			steps {
+				sh 'npm run build'
+			}
+		}
+		
+		stage('Deploy') {
+			steps {
+//				sh 'sudo rm -r /home/ubuntu/app-deploy/dist'
+				sh 'sudo rm -r /var/www/html/*'
+				sh 'sudo mv /var/lib/jenkins/workspace/frontend/dist/* /var/www/html'
+//				sh 'sudo cp -R /home/ubuntu/app-deploy/dist/* /var/www/html'
+				sh 'sudo service nginx reload'
+			}
+		}
+	}
+	
+	post {
+		failure {
+			mail to: 'mohamedbahaa7777@gmail.com',
+            		subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+            		body: "Something is wrong with ${env.BUILD_URL}"
+		    slackSend channel: 'jenkins', message: 'Failed Pipeline: ${currentBuild.fullDisplayName} Something is wrong with ${env.BUILD_URL} ', notifyCommitters: true, teamDomain: 'eventus-crew', tokenCredentialId: 'ee68a154-5dae-4d45-b22e-5864360ebfb1'
+
+		}
+	}
+}

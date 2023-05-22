@@ -1,0 +1,50 @@
+pipeline {
+	agent any
+	
+	stages {
+	
+		stage('Fetch code') {
+			steps {
+			    git branch: 'SW-Project-Backend',
+				url: 'https://github.com/EventBriteClone/EventBrite_Clone_Backend.git'
+				sh'sudo su'
+			}
+		}
+		
+		stage('Install dependencies') {
+			steps {
+			    sh 'sudo systemctl stop mydjango'
+				sh 'pip install -r /var/lib/jenkins/workspace/backend/requirements.txt'
+			}
+		}
+		
+		stage('Test') {
+			steps {
+	            sh 'sudo python3 /var/lib/jenkins/workspace/backend/eventbrite/manage.py test /var/lib/jenkins/workspace/backend/eventbrite/event/tests /var/lib/jenkins/workspace/backend/eventbrite/booking/tests /var/lib/jenkins/workspace/backend/eventbrite/user/tests /var/lib/jenkins/workspace/backend/eventbrite/eventManagment/tests'
+			}
+		}
+		
+// 		stage('Build') {
+// 			steps {
+
+// 			}
+// 		}
+		
+		stage('Deploy') {
+			steps {
+                sh ' python3 /var/lib/jenkins/workspace/backend/eventbrite/manage.py makemigrations'   
+                sh ' python3 /var/lib/jenkins/workspace/backend/eventbrite/manage.py migrate'
+				sh 'sudo systemctl start mydjango'
+			}
+		}
+	}
+	
+	post {
+		failure {
+			mail to: 'mohamedbahaa7777@gmail.com',
+            		subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+            		body: "Something is wrong with ${env.BUILD_URL}"
+    		slackSend channel: 'jenkins', message: 'Failed Pipeline: ${currentBuild.fullDisplayName} Something is wrong with ${env.BUILD_URL} ', notifyCommitters: true, teamDomain: 'eventus-crew', tokenCredentialId: 'ee68a154-5dae-4d45-b22e-5864360ebfb1'
+		}
+	}
+}
