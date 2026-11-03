@@ -1,25 +1,29 @@
-# DevOps Automation Scripts
+# EventBrite DevOps
 
-## Description
-This repository contains a collection of automation scripts and configuration files for streamlining the DevOps processes in our project. It aims to automate various tasks such as deployment, continuous integration, infrastructure management, and monitoring.
+DevOps automation for an Eventbrite-like event management platform: CI/CD with Jenkins, containerized services with Docker, Nginx as reverse proxy, and Prometheus-based monitoring on Linux / AWS.
 
-## Key Features
-- CI/CD pipeline scripts for automated build, test, and deployment processes
-- Systemd unit files for managing services and ensuring high availability
-- Configuration files for infrastructure management tools like Terraform and Ansible
-- Prometheus and Grafana setup for monitoring and observability
-- Docker configuration files for containerization of applications
+I owned the DevOps side of the project.
 
-## Dependencies
-- Jenkins for CI/CD pipeline
-- Docker for containerization
-- Prometheus and Grafana for monitoring
+## What's here
 
-## Links:
-- Live Demo: [Demo Link](https://www.event-us.me)
-- Documentation: [Documentation Link](https://bahaa.gitbook.io/devops/)
+| Folder | Contents |
+|---|---|
+| `scripts/Jenkins` | Jenkins pipeline scripts for build, test and deploy |
+| `scripts/Docker` | Dockerfiles and container configuration |
+| `scripts/nginx` | Nginx reverse proxy configuration |
 
-Please refer to the documentation for detailed instructions on how to use and configure the automation scripts and files in this repository.
+## Highlights
 
-Contributions and feedback are welcome. If you have any suggestions, bug fixes, or enhancements, please feel free to open a pull request or submit an issue.
+- Automated build → test → deploy pipeline with Jenkins
+- Containerized services with Docker, deployed to AWS, traffic routed through Nginx
+- systemd unit files to keep services running and restart them on failure
+- Monitoring with Prometheus, node-exporter and Grafana, plus centralized logs for faster debugging
+- Linux server administration and a Postfix mail server for transactional emails
 
+## Tech stack
+
+Jenkins · Docker · Nginx · AWS · Linux · systemd · Prometheus · node-exporter · Grafana · Postfix
+
+## Links
+
+- Documentation: https://bahaa.gitbook.io/devops/
